@@ -1,3 +1,27 @@
+// Theme Toggle Logic
+const themeBtn = document.getElementById('theme-btn');
+const body = document.body;
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    body.classList.add('dark-mode');
+    themeBtn.textContent = 'Light Mode';
+}
+
+themeBtn.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    const isDarkMode = body.classList.contains('dark-mode');
+    
+    if (isDarkMode) {
+        themeBtn.textContent = 'Light Mode';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        themeBtn.textContent = 'Dark Mode';
+        localStorage.setItem('theme', 'light');
+    }
+});
+
 class LottoBall extends HTMLElement {
     constructor() {
         super();
